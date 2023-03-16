@@ -1,6 +1,11 @@
 import React from "react";
 
-const Categories = ({ categories, filterItems }) => {
+type CategoriesProps = {
+  categories: string[];
+  filterItems: (category: string) => void;
+};
+
+const Categories: React.FC<CategoriesProps> = ({ categories, filterItems }) => {
   return (
     <div className="btn-container">
       {categories.map((category, index) => {

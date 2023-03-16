@@ -1,14 +1,23 @@
 import React from "react";
 
-// Menuコンポーネントは、itemsというpropsを受け取ります。
-const Menu = ({ items }) => {
+type MenuItem = {
+  id: number;
+  title: string;
+  category: string;
+  price: number;
+  img: string;
+  desc: string;
+};
+
+type MenuProps = {
+  items: MenuItem[];
+};
+
+const Menu: React.FC<MenuProps> = ({ items }) => {
   return (
-    // メニューアイテムを表示するためのセクションセンターをレンダリングします。
     <div className="section-center">
-      {items.map((menuItem) => {
-        // menuItemから、id、title、img、desc、priceの各プロパティを抽出します。
+      {items.map((menuItem: MenuItem) => {
         const { id, title, img, desc, price } = menuItem;
-        // メニューアイテムをレンダリングします。
         return (
           <article key={id} className="menu-item">
             <img src={img} alt={title} className="photo" />
@@ -26,5 +35,4 @@ const Menu = ({ items }) => {
   );
 };
 
-// Menuコンポーネントをエクスポートします。
 export default Menu;

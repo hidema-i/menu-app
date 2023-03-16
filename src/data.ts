@@ -1,4 +1,13 @@
-const menu = [
+type MenuItem = {
+  id: number;
+  title: string;
+  category: string;
+  price: number;
+  img: string;
+  desc: string;
+};
+
+const menu: MenuItem[] = [
   {
     id: 1,
     title: "simple desk",

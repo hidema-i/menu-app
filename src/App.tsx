@@ -1,25 +1,30 @@
+import React from "react";
+
 import { useState } from "react";
 import Categories from "./Categories";
 import items from "./data";
 import Menu from "./Menu";
 
+type MenuItem = {
+  id: number;
+  title: string;
+  category: string;
+  price: number;
+  img: string;
+  desc: string;
+};
+
 const allCategories = ["all", ...new Set(items.map((item) => item.category))];
 
 function App() {
-  // itemsという名前でdata.jsからデータを読み込み、menuItemに設定
-  const [menuItem, setMenuItem] = useState(items);
+  const [menuItem, setMenuItem] = useState<MenuItem[]>(items);
+  const [categories, setCategories] = useState<string[]>(allCategories);
 
-  // カテゴリーの一覧を管理するstateを初期化
-  const [categories, setCategories] = useState(allCategories);
-
-  // カテゴリーでアイテムをフィルタリングする関数
-  const filterItems = (category) => {
+  const filterItems = (category: string) => {
     if (category === "all") {
-      // "all"を選択した場合はすべてのアイテムを表示
       setMenuItem(items);
       return;
     }
-    // 選択されたカテゴリーでアイテムをフィルタリング
     const newItems = items.filter((item) => item.category === category);
     setMenuItem(newItems);
   };
@@ -31,9 +36,7 @@ function App() {
           <h2>our menu</h2>
           <div className="underline"></div>
         </div>
-        {/* カテゴリーコンポーネントを表示 */}
         <Categories categories={categories} filterItems={filterItems} />
-        {/* フィルタリングされたアイテムを表示 */}
         <Menu items={menuItem} />
       </section>
     </main>
