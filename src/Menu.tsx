@@ -1,18 +1,19 @@
 import React from "react";
 
 type MenuItem = {
-  id: number;
-  title: string;
-  category: string;
-  price: number;
-  img: string;
-  desc: string;
+  id: number; // 商品のID
+  title: string; // 商品のタイトル
+  category: string; // 商品のカテゴリー
+  price: number; // 商品の価格
+  img: string; // 商品の画像
+  desc: string; // 商品の説明
 };
 
 type MenuProps = {
-  items: MenuItem[];
+  items: MenuItem[]; // 表示する商品リスト
 };
 
+// メニューのコンポーネント
 const Menu: React.FC<MenuProps> = ({ items }) => {
   return (
     <div className="section-center">
