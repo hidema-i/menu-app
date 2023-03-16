@@ -1,12 +1,14 @@
+// MenuItem型を定義する
 type MenuItem = {
-  id: number;
-  title: string;
-  category: string;
-  price: number;
-  img: string;
-  desc: string;
+  id: number; // 商品のID
+  title: string; // 商品のタイトル
+  category: string; // 商品のカテゴリー
+  price: number; // 商品の価格
+  img: string; // 商品の画像URL
+  desc: string; // 商品の説明
 };
 
+// 商品の配列を定義する
 const menu: MenuItem[] = [
   {
     id: 1,
